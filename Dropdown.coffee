@@ -4,7 +4,6 @@
 
 class exports.Dropdown extends Layer
 	constructor: (options) ->
-
 		super(options)
 
 		###
@@ -16,8 +15,10 @@ class exports.Dropdown extends Layer
 
 		css = """
 			.dropdown-framer {
+				color: #{options.color};
 				font-family: #{options.fontFamily}, serif;
 				font-size: #{options.fontSize}px;
+				font-weight: #{options.fontWeight};
 				line-height: #{options.parent.height}px;
 				width: #{options.parent.width}px;
 				margin: 0;
@@ -34,9 +35,9 @@ class exports.Dropdown extends Layer
 
 		formattedOptions = ""
 		options.selectOptions.map((option) ->
-				dropdownOptions = "<option>#{option}</option>"
-				formattedOptions += dropdownOptions
-			)
+			dropdownOptions = "<option>#{option}</option>"
+			formattedOptions += dropdownOptions
+		)
 
 		formattedHtml = """
 			<select class="dropdown-framer">
@@ -46,6 +47,6 @@ class exports.Dropdown extends Layer
 
 		@html = formattedHtml
 
-		#Returns the value currently selected#
+	#Returns the value currently selected#
 	getSelected: () ->
 		return @._element.getElementsByClassName("dropdown-framer")[0].value
